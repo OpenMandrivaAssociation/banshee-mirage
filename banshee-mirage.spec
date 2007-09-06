@@ -1,7 +1,7 @@
 %define name banshee-mirage
 %define oname mirage
 %define version 0.1
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary: Automatic playlist generator for Banshee based on similarity
 Name: %{name}
@@ -9,6 +9,7 @@ Version: %{version}
 Release: %{release}
 Source0: %{oname}_%{version}-1.tar.bz2
 Source1: Banshee.Plugins.Mirage.dll.config
+Patch: mirage-flac.patch
 License: GPLv2
 Group: Sound
 Url: http://hop.at/mirage/
@@ -20,6 +21,7 @@ BuildRequires: sqlite3-devel
 Requires: sox
 Requires: mpg123
 Requires: vorbis-tools
+Suggests: flac
 Suggests: faad2
 
 
@@ -34,6 +36,7 @@ player Banshee.
 
 %prep
 %setup -q -n %oname
+%patch -p1 -b .flac
 
 %build
 %configure2_5x
