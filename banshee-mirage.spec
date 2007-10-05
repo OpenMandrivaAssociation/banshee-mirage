@@ -1,16 +1,14 @@
 %define name banshee-mirage
 %define oname mirage
-%define version 0.1
-%define release %mkrel 2
+%define version 0.2
+%define release %mkrel 1
 
 Summary: Automatic playlist generator for Banshee based on similarity
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: %{oname}_%{version}-1.tar.bz2
-Source1: Banshee.Plugins.Mirage.dll.config
-Patch: mirage-flac.patch
-License: GPLv2
+Source0: %{oname}_%{version}.tar.gz
+License: GPLv2+
 Group: Sound
 Url: http://hop.at/mirage/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -18,12 +16,12 @@ BuildRequires: banshee
 BuildRequires: mono-devel
 BuildRequires: libfftw-devel
 BuildRequires: sqlite3-devel
-Requires: sox
-Requires: mpg123
-Requires: vorbis-tools
-Suggests: flac
-Suggests: faad2
-
+BuildRequires: libgstreamer0.10-devel
+BuildRequires: libsamplerate-devel
+Suggests: gstreamer0.10-faad
+Suggests: gstreamer0.10-plugins-ugly
+Suggests: gstreamer0.10-flac
+Suggests: gstreamer0.10-plugins-good
 
 %description
 
@@ -36,21 +34,26 @@ player Banshee.
 
 %prep
 %setup -q -n %oname
-%patch -p1 -b .flac
 
 %build
 %configure2_5x
-%make
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
-cp %SOURCE1 %buildroot%_libdir/banshee/Banshee.Plugins/Banshee.Plugins.Mirage.dll.config
+#gw wrong dir
+%if %_lib != lib
+mv  %buildroot%_prefix/lib/banshee/*  %buildroot%_libdir/banshee/
+%endif
+rm -f %buildroot%_libdir/banshee/libmirageaudio.*a
+%find_lang Mirage
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f Mirage.lang
 %defattr(-,root,root)
-%attr(755,root,root) %_bindir/mirage-decoder
 %_libdir/banshee/Banshee.Plugins/Banshee.Plugins.Mirage.dll*
+%_libdir/banshee/Mirage.dll*
+%_libdir/banshee/libmirageaudio.so
