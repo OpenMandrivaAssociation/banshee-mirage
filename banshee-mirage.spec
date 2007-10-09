@@ -16,7 +16,7 @@ BuildRequires: banshee
 BuildRequires: mono-devel
 BuildRequires: libfftw-devel
 BuildRequires: sqlite3-devel
-BuildRequires: libgstreamer0.10-devel
+BuildRequires: libgstreamer-plugins-base-devel
 BuildRequires: libsamplerate-devel
 Suggests: gstreamer0.10-faad
 Suggests: gstreamer0.10-plugins-ugly
