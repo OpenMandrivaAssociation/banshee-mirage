@@ -11,6 +11,7 @@ Source0: %{oname}_%{version}.tar.gz
 License: GPLv2+
 Group: Sound
 Url: http://hop.at/mirage/
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: banshee
 BuildRequires: mono-devel
 BuildRequires: libfftw-devel
