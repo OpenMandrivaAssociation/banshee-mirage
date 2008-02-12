@@ -24,7 +24,6 @@ Suggests: gstreamer0.10-flac
 Suggests: gstreamer0.10-plugins-good
 
 %description
-
 Mirage is a ready-to-try implementation of the latest reseach in
 automatic playlist generation and music similarity. Mirage analyzes
 your music collection and computes similarity models for each song, so
