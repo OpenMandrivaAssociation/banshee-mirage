@@ -1,18 +1,18 @@
 %define name banshee-mirage
 %define oname mirage
-%define version 0.2
+%define version 0.3.0
 %define release %mkrel 1
 
 Summary: Automatic playlist generator for Banshee based on similarity
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: %{oname}_%{version}.tar.gz
+Source0: %{oname}-%{version}.tar.gz
 License: GPLv2+
 Group: Sound
 Url: http://hop.at/mirage/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: banshee
+BuildRequires: banshee >= 1.2.0
 BuildRequires: mono-devel
 BuildRequires: libfftw-devel
 BuildRequires: sqlite3-devel
@@ -32,7 +32,7 @@ generation was implemented as a plugin for the popular GNOME audio
 player Banshee. 
 
 %prep
-%setup -q -n %oname
+%setup -q -n %oname-%version
 
 %build
 %configure2_5x
@@ -45,7 +45,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %_lib != lib
 mv  %buildroot%_prefix/lib/banshee/*  %buildroot%_libdir/banshee/
 %endif
-rm -f %buildroot%_libdir/banshee/libmirageaudio.*a
+rm -f %buildroot%_libdir/libmirageaudio.*a
 %find_lang Mirage
 
 %clean
@@ -53,6 +53,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f Mirage.lang
 %defattr(-,root,root)
-%_libdir/banshee/Banshee.Plugins/Banshee.Plugins.Mirage.dll*
-%_libdir/banshee/Mirage.dll*
-%_libdir/banshee/libmirageaudio.so
+%_libdir/banshee-1/Extensions/Banshee.Mirage.dll*
+%_libdir/banshee-1/Extensions/Mirage.dll*
+%_libdir/libmirageaudio.so
