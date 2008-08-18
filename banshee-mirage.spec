@@ -1,12 +1,18 @@
 %define name banshee-mirage
 %define oname mirage
-%define version 0.3.0
-%define release %mkrel 1
+%define version 0.3.1
+%define rel 1
+%define svn 20080809
+%define release %mkrel 0.%{svn}.%{rel}
 
 Summary: Automatic playlist generator for Banshee based on similarity
 Name: %{name}
 Version: %{version}
 Release: %{release}
+# The source for this package was pulled from upstream's CVS.  Use the
+# following commands to generate the tarball:
+# svn co -r {2008-08-09} https://svn.hop.at/repos/mirage/
+# cd mirage && ./autogen.sh && make dist
 Source0: %{oname}-%{version}.tar.gz
 License: GPLv2+
 Group: Sound
@@ -36,15 +42,11 @@ player Banshee.
 
 %build
 %configure2_5x
-make
+%make
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
-#gw wrong dir
-%if %_lib != lib
-mv  %buildroot%_prefix/lib/banshee/*  %buildroot%_libdir/banshee/
-%endif
 rm -f %buildroot%_libdir/libmirageaudio.*a
 %find_lang Mirage
 
