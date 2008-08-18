@@ -19,6 +19,7 @@ Group: Sound
 Url: http://hop.at/mirage/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: banshee >= 1.2.0
+BuildRequires: gnome-sharp2-devel
 BuildRequires: mono-devel
 BuildRequires: libfftw-devel
 BuildRequires: sqlite3-devel
