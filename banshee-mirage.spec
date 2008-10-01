@@ -1,7 +1,7 @@
 %define name banshee-mirage
 %define oname mirage
 %define version 0.3.1
-%define rel 1
+%define rel 2
 %define svn 20080809
 %define release %mkrel 0.%{svn}.%{rel}
 
