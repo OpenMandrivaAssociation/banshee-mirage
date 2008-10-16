@@ -22,6 +22,7 @@ BuildRequires: sqlite3-devel
 BuildRequires: libgstreamer-plugins-base-devel
 BuildRequires: libsamplerate-devel
 BuildRequires: libtool
+BuildRequires: intltool
 Suggests: gstreamer0.10-faad
 Suggests: gstreamer0.10-plugins-ugly
 Suggests: gstreamer0.10-flac
