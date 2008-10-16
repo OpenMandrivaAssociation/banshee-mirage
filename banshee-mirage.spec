@@ -2,18 +2,14 @@
 %define oname mirage
 %define version 0.3.1
 %define rel 2
-%define svn 20080809
+%define svn r57
 %define release %mkrel 0.%{svn}.%{rel}
 
 Summary: Automatic playlist generator for Banshee based on similarity
 Name: %{name}
 Version: %{version}
 Release: %{release}
-# The source for this package was pulled from upstream's CVS.  Use the
-# following commands to generate the tarball:
-# svn co -r {2008-08-09} https://svn.hop.at/repos/mirage/
-# cd mirage && ./autogen.sh && make dist
-Source0: %{oname}-%{version}.tar.gz
+Source0: %{oname}-%{svn}.tar.bz2
 License: GPLv2+
 Group: Sound
 Url: http://hop.at/mirage/
@@ -39,7 +35,8 @@ generation was implemented as a plugin for the popular GNOME audio
 player Banshee. 
 
 %prep
-%setup -q -n %oname-%version
+%setup -q -n %oname
+./autogen.sh
 
 %build
 %configure2_5x
