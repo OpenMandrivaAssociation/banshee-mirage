@@ -1,8 +1,8 @@
 %define name banshee-mirage
 %define oname mirage
-%define version 0.3.1
+%define version 0.4
 %define rel 1
-%define svn r63
+%define svn r76
 %define release %mkrel 1.%{svn}.%{rel}
 
 Summary: Automatic playlist generator for Banshee based on similarity
@@ -14,7 +14,7 @@ License: GPLv2+
 Group: Sound
 Url: http://hop.at/mirage/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: banshee >= 1.3.2
+BuildRequires: banshee >= 1.4
 BuildRequires: gnome-sharp2-devel
 BuildRequires: mono-devel
 BuildRequires: libfftw-devel
@@ -38,10 +38,14 @@ player Banshee.
 
 %prep
 %setup -q -n %oname
-./autogen.sh
+intltoolize
+libtoolize
+aclocal
+autoconf
+automake -a
 
 %build
-%configure2_5x
+%configure2_5x --disable-dependency-tracking
 %make
 
 %install
