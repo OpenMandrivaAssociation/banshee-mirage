@@ -1,15 +1,13 @@
 %define name banshee-mirage
 %define oname mirage
-%define version 0.4
-%define rel 1
-%define svn r76
-%define release %mkrel 1.%{svn}.%{rel}
+%define version 0.4.0
+%define release %mkrel 1
 
 Summary: Automatic playlist generator for Banshee based on similarity
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: %{oname}-%{svn}.tar.bz2
+Source0: http://hop.at/mirage/download/%{oname}-%{version}.tar.gz
 License: GPLv2+
 Group: Sound
 Url: http://hop.at/mirage/
@@ -37,12 +35,7 @@ generation was implemented as a plugin for the popular GNOME audio
 player Banshee. 
 
 %prep
-%setup -q -n %oname
-intltoolize
-libtoolize
-aclocal
-autoconf
-automake -a
+%setup -q -n %oname-%version
 
 %build
 %configure2_5x --disable-dependency-tracking
