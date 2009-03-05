@@ -1,7 +1,7 @@
 %define name banshee-mirage
 %define oname mirage
 %define version 0.4.0
-%define release %mkrel 3
+%define release %mkrel 4
 
 Summary: Automatic playlist generator for Banshee based on similarity
 Name: %{name}
