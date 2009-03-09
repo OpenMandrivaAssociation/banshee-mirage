@@ -1,7 +1,7 @@
 %define name banshee-mirage
 %define oname mirage
-%define version 0.4.0
-%define release %mkrel 4
+%define version 0.5.0
+%define release %mkrel 1
 
 Summary: Automatic playlist generator for Banshee based on similarity
 Name: %{name}
@@ -45,12 +45,12 @@ player Banshee.
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 rm -f %buildroot%_libdir/libmirageaudio.*a
-%find_lang Mirage
+%find_lang mirage
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f Mirage.lang
+%files -f mirage.lang
 %defattr(-,root,root)
 %_libdir/banshee-1/Extensions/Banshee.Mirage.dll*
 %_libdir/banshee-1/Extensions/Mirage.dll*
