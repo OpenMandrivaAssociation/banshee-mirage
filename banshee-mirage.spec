@@ -10,7 +10,7 @@ Release: %{release}
 Source0: http://hop.at/mirage/download/%{oname}-%{version}.tar.gz
 License: GPLv2+
 Group: Sound
-Url: http://hop.at/mirage/
+Url: https://hop.at/mirage/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: banshee >= 1.4
 BuildRequires: gnome-sharp2-devel
