@@ -12,6 +12,11 @@ License: GPLv2+
 Group: Sound
 Url: https://hop.at/mirage/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires: banshee >= 1.4
 BuildRequires: gnome-sharp2-devel
 BuildRequires: mono-devel
